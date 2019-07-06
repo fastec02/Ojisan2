@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header v-bind:val="count"/>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6">
+          <p>ガチャを回しておじさんを手に入れよう</p>
           <img width="60%" src="./assets/gachagacha.png">
-          <Dashboard/>
+          <Dashboard v-on:child-event="parentMethod"/>
         </div>
         <div class="col-sm-6">
           <div class="border-left">
@@ -25,11 +26,21 @@ import Header from "./components/Header";
 
 export default {
   name: "App",
+  data() {
+    return {
+      count: 0
+    };
+  },
   components: {
     Dashboard,
     Mymodal,
     Pop,
     Header
+  },
+  methods: {
+    parentMethod(count) {
+      this.count = count;
+    }
   }
 };
 </script>
@@ -41,6 +52,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 0px;
+  margin: 0px;
 }
 </style>

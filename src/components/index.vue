@@ -1,8 +1,6 @@
 <template>
   <div class="example-modal-window">
-    <p>ガチャを回しておじさんを手に入れよう</p>
-    <button @click="openModal">回す</button>
-    <p>現在{{ count }}おじさん</p>
+    <button @click="openModal" class="btn btn-primary btn-lg">回す</button>
     <!-- コンポーネント MyModal -->
     <MyModal @close="closeModal" v-if="modal">
       <!-- default スロットコンテンツ -->
@@ -58,6 +56,7 @@ export default {
       this.count += 1;
       this.getRandom();
       this.modal = true;
+      this.sendBus();
     },
     closeModal() {
       this.modal = false;
@@ -68,6 +67,9 @@ export default {
     getRandom() {
       const rnd = Math.floor(Math.random() * this.ojisan_components.length);
       return this.ojisan_components[rnd];
+    },
+    sendBus() {
+      this.$emit("child-event", this.count);
     }
   }
 };

@@ -14,26 +14,29 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-      </ul>
+      <ul class="navbar-nav mr-auto"></ul>
+      <span class="navbar-text">現在 {{ val}}おじさん</span>
     </div>
   </nav>
 </template>
 
 <script>
+import App from "../App.vue";
 export default {
   name: "Header",
-  props: {
-    msg: String
+  data() {
+    return {
+      count: 0
+    };
+  },
+  props: ["val"],
+  mounted: function() {
+    App.bus.$on("bus-event", this.changeMethod);
+  },
+  methods: {
+    changeMethod(count) {
+      this.count = count;
+    }
   }
 };
 </script>

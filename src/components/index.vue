@@ -26,6 +26,7 @@ import OjiC from "./ojisan/ojisan_c.vue";
 import OjiD from "./ojisan/ojisan_d.vue";
 import OjiE from "./ojisan/ojisan_e.vue";
 import OjiF from "./ojisan/ojisan_f.vue";
+import Flag from "./ojisan/ojisan_flag.vue";
 
 export default {
   components: {
@@ -35,7 +36,8 @@ export default {
     ojisan_c: OjiC,
     ojisan_d: OjiD,
     ojisan_e: OjiE,
-    ojisan_f: OjiF
+    ojisan_f: OjiF,
+    Flag
   },
   data() {
     return {
